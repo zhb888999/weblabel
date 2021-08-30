@@ -175,10 +175,12 @@ watch([()=>props.cls, ()=>props.color], ()=>initOptions())
 
 watch(()=>props.src, ()=>image.src = props.src)
 
+watch(()=>props.label, ()=>updateDraw())
+
 const _width = computed(()=>Math.max(1, props.width))
 const _height = computed(()=>Math.max(1, props.height))
 
-image.onload = ()=> { 
+const updateDraw = ()=> {
   rate = Math.min(props.width/image.width, props.height/image.height)
   canvasWidth.value = image.width * rate
   canvasHeight.value = image.height * rate
@@ -208,6 +210,10 @@ image.onload = ()=> {
     drawLabelNormal(label)
     cache = ctx.getImageData(0, 0, canvasWidth.value, canvasHeight.value)
   })
+}
+
+image.onload = ()=> { 
+  updateDraw()
 }
 
 const createLabel = ()=> currentState = state.CREATE
@@ -249,9 +255,9 @@ const drawLabelNormal = (label)=> {
   ctx.font = `${props.fontStyle} ${props.fontSize}px ${props.fontType}`
   const textWidth = ctx.measureText(label.label).width
   ctx.fillStyle = label.color
-  ctx.fillRect(label.x1+props.lineWidth/2, label.y1+props.lineWidth/2,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
+  ctx.fillRect(label.x1+props.lineWidth, label.y1+props.lineWidth,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
   ctx.fillStyle = props.fontColor
-  ctx.fillText(label.label, label.x1+props.lineWidth, label.y1+props.lineWidth)
+  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2*props.lineWidth)
 
   label.labelW = textWidth + 4*props.lineWidth
   label.labelH = props.fontSize + 4*props.lineWidth
@@ -267,9 +273,9 @@ const drawLabelActive = (label)=> {
   ctx.font = `${props.fontStyle} ${props.fontSize}px ${props.fontType}`
   const textWidth = ctx.measureText(label.label).width
   ctx.fillStyle = label.color
-  ctx.fillRect(label.x1+props.lineWidth/2, label.y1+props.lineWidth/2,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
+  ctx.fillRect(label.x1+props.lineWidth, label.y1+props.lineWidth,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
   ctx.fillStyle = props.fontColor
-  ctx.fillText(label.label, label.x1+props.lineWidth, label.y1+props.lineWidth)
+  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2*props.lineWidth)
 
   label.labelW = textWidth + 4*props.lineWidth
   label.labelH = props.fontSize + 4*props.lineWidth

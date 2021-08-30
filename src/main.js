@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import { create, NButton, NSelect, NSpace, NButtonGroup } from 'naive-ui'
+import { create, NButton, NSelect, NSpace, NButtonGroup, NPagination, NGrid, NGridItem, NCard, NModal } from 'naive-ui'
 
 const naive = create({
-  components: [NButton, NSelect, NSpace, NButtonGroup]
+  components: [NButton, NSelect, NSpace, NButtonGroup, NPagination, NGrid, NGridItem, NCard, NModal]
 })
 
 createApp(App)

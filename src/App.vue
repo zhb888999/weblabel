@@ -5,6 +5,7 @@
     :color="color"
     :width="width"
     :height="height"
+    :font-size="20"
     :label="label"
     :edit="edit"
     @submit="submit($event)"
@@ -22,10 +23,12 @@
   <n-button @click="changeImg">Test</n-button>
   <n-button @click="changeLabel">Test2</n-button>
   <n-button @click="changeEdit">Test3</n-button>
+  <History/>
 </template>
 
 <script setup>
 import Draw from "./components/Draw.vue"
+import History from './components/History.vue'
 import { ref } from 'vue'
 const image=ref("/src/assets/test2.jpg")
 
