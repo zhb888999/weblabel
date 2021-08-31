@@ -23,7 +23,7 @@
   <n-button @click="changeImg">Test</n-button>
   <n-button @click="changeLabel">Test2</n-button>
   <n-button @click="changeEdit">Test3</n-button>
-  <History/>
+  <History style="background-color: #888888;"/>
 </template>
 
 <script setup>

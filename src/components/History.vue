@@ -1,34 +1,38 @@
 <template>
-<div style="width: 90%; height: 80%">
-    <n-grid :x-gap="8" :y-gap="8" :cols="cols">
-        <n-grid-item v-for="(label, index) in labels" :key="index">
-            <Draw class="data"
-                :src="label.src"
-                :width="size"
-                :height="size"
-                :label="label.label"
-                :edit="false"
-                :cls="cls"
-                :color="color"
-                :font-size="fontSize"
-                :line-width="lineWidth"
-                @click="editLabel(index)"
-            >
-            </Draw>
-        </n-grid-item>
-    </n-grid>
-    <n-pagination
-      v-model:page="page"
-      v-model:page-size="pageSize"
-      :page-count="10"
-      show-size-picker
-      :page-sizes="[8, 18, 32, 50]"
-      show-quick-jumper
-      @update:page="updatePage($event)"
-      @update:page-size="updatePageSize($event)"
-    />
+<div style="width: 1500px; height: 900;">
+    <div style="padding: 8px;">
+        <n-grid :x-gap="8" :y-gap="8" :cols="cols">
+            <n-grid-item v-for="(label, index) in labels" :key="index">
+                <Draw class="data"
+                    :src="label.src"
+                    :width="size"
+                    :height="size"
+                    :label="label.label"
+                    :edit="false"
+                    :cls="cls"
+                    :color="color"
+                    :font-size="fontSize"
+                    :line-width="lineWidth"
+                    @click="editLabel(index)"
+                >
+                </Draw>
+            </n-grid-item>
+        </n-grid>
+    </div>
+    <div class="pagination">
+        <n-pagination
+        v-model:page="page"
+        v-model:page-size="pageSize"
+        :page-count="10"
+        show-size-picker
+        :page-sizes="[8, 18, 32, 50]"
+        show-quick-jumper
+        @update:page="updatePage($event)"
+        @update:page-size="updatePageSize($event)"
+        />
+    </div>
     <n-modal
-        class="custom-card"
+        style="width: 1000px;"
         v-model:show="showEdit"
         preset="card"
         title="修改标签"
@@ -52,7 +56,7 @@ import { ref, watch } from 'vue'
 import Draw from './Draw.vue'
 
 const page = ref(1)
-const pageSize = ref(40)
+const pageSize = ref(50)
 
 const fontSize = ref(12)
 const lineWidth = ref(1)
@@ -61,7 +65,7 @@ const labels = ref([])
 const showEdit = ref(false)
 const labelIndex = ref(0)
 const cols=ref(10)
-const size = ref(130)
+const size = ref(110)
 
 const cls = ref(["车", "房"])
 const color = ref(["red", "blue"])
@@ -99,9 +103,9 @@ const updatePage = number => {
 
 const updatePageSize = number => {
     initLabels(number)
-    if(number == 60) {
+    if(number == 50) {
         cols.value = 10
-        size.value = 120
+        size.value = 110
         pageSize.value = 50
         fontSize.value = 12
         lineWidth.value = 1
@@ -113,7 +117,7 @@ const updatePageSize = number => {
         lineWidth.value = 2
     } else if(number == 18) {
         cols.value = 6
-        size.value = 220
+        size.value = 217
         fontSize.value = 14
         pageSize.value = 18
         lineWidth.value = 4
@@ -132,6 +136,11 @@ const updatePageSize = number => {
 <style>
 .data {
     background-color: whitesmoke;
+    border: 1px solid;
+    border-radius: 5px;
 }
-
+.pagination {
+    display: flex;
+    justify-content: center;
+}
 </style>

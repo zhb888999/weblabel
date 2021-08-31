@@ -257,7 +257,7 @@ const drawLabelNormal = (label)=> {
   ctx.fillStyle = label.color
   ctx.fillRect(label.x1+props.lineWidth, label.y1+props.lineWidth,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
   ctx.fillStyle = props.fontColor
-  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2*props.lineWidth)
+  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2.5*props.lineWidth)
 
   label.labelW = textWidth + 4*props.lineWidth
   label.labelH = props.fontSize + 4*props.lineWidth
@@ -275,7 +275,7 @@ const drawLabelActive = (label)=> {
   ctx.fillStyle = label.color
   ctx.fillRect(label.x1+props.lineWidth, label.y1+props.lineWidth,  textWidth + 2*props.lineWidth, props.fontSize + 2*props.lineWidth);
   ctx.fillStyle = props.fontColor
-  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2*props.lineWidth)
+  ctx.fillText(label.label, label.x1+2*props.lineWidth, label.y1+2.5*props.lineWidth)
 
   label.labelW = textWidth + 4*props.lineWidth
   label.labelH = props.fontSize + 4*props.lineWidth
