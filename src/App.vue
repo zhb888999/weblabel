@@ -1,4 +1,5 @@
 <template>
+ <n-config-provider :theme="darkTheme" :locale="zhCN" :date-locale="dateZhCN">
   <Draw 
     :src="image" 
     :cls="cls" 
@@ -24,9 +25,13 @@
   <n-button @click="changeLabel">Test2</n-button>
   <n-button @click="changeEdit">Test3</n-button>
   <History style="background-color: #888888;"/>
+  <n-global-style />
+  </n-config-provider>
 </template>
 
 <script setup>
+import { zhCN, dateZhCN } from 'naive-ui'
+import { darkTheme } from 'naive-ui'
 import Draw from "./components/Draw.vue"
 import History from './components/History.vue'
 import { ref } from 'vue'

@@ -498,7 +498,6 @@ const mouseUp = (e)=> {
   margin: 10px;
 }
 .draw {
-  background-color: #DDFFFF;
 }
 canvas {
   border-style:solid;
